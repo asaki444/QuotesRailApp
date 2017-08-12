@@ -1,0 +1,2 @@
+class CategoryQuotesController < ApplicationController
+end

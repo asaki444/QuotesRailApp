@@ -1,0 +1,2 @@
+class CategoryQuote < ApplicationRecord
+end
