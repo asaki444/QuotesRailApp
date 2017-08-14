@@ -5,6 +5,7 @@
         <%= f.fields_for :author, quote.author.build do |author_field| %>
             <%= author_field.label :name %>
             <%= author_field.text_area :name %>
+            <%= author_field.hidden_field :quote_id, :value => quote.id %>
         <% end  %>
         <%= f.label :author %><br>
         <%= f.text_field :author %><br>
