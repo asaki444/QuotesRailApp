@@ -13,19 +13,20 @@ class QuotesController < ApplicationController
         @quote = Quote.find_by(id: params[:id]) if !check
     end
     
-    def create
-        quote = Quote.create(quote_params)
-        redirect_to quote_path(quote)
-    end
-
     def show 
         @quote = Quote.find_by(id: params[:id])
     end 
 
     def create
-        quote = Quote.create(quote_params)
+        quote = Quote.new(quote_params)
+        if quote.save
         redirect_to quote_path(quote)
+        else
+        flash[:notice] = "Text or Author Missing"
+        redirect_to new_quote_path
+        end
     end
+
  
     def update
         quote = Quote.find_by(params[:id])
