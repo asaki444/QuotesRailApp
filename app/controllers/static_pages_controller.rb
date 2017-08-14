@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @quotes = Quotes.all
+    @quotes = Quote.all
   end
 end

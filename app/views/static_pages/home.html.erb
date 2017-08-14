@@ -1,17 +1,20 @@
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
+
 <h1>quotes app </h1>
     <p>collect the quotes you love!</p>
-<% if !quotes.empty? %>
+<% if !@quotes.empty? %>
     <% @quotes.all.each do |quote|%>
         <div>
-            Name: <%= quote.name %><br>
-            Description: <%= quote.description %><br>
-            <%= link_to "Locations", quote_catgories_path(quote) %>
+            Name: <%= quote.text %><br>
+            Author: <%= quote.author %><br>
+            <%= link_to "Quote", quote_path(quote) %>
+            <%= link_to "Categories", quote_categories_path(quote) %>
         </div>
     <% end %>
 <% else %>
      <h3>Looks like no one has added their quotes!</h3>
 <% end %>
 
-<%= link_to "Sign In", new_user_session_path %>
-<%= link_to "Facebook Sign In", user_facebook_omniauth_authorize_path %>
-<%= link_to "Sign Up", new_user_registration_path %>
+ <%= link_to "Add Quote", new_quote_path %>
