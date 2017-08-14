@@ -4,6 +4,9 @@
 
 <h1>quotes app </h1>
     <p>collect the quotes you love!</p>
+<h2>Most Relatable Quote Today</h2>
+ <h3> <%=  @relatable.text %> </h3>
+    <h4>By: <%= @relatable.author %></h4>
 <% if !@quotes.empty? %>
     <% @quotes.all.each do |quote|%>
         <div>
