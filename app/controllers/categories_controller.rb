@@ -6,18 +6,22 @@ class CategoriesController < ApplicationController
 
     def index
         @quote = Quote.find_by(id: params[:quote_id])
-        @categories = @rquote.categories
+        @categories = @quote.categories
     end
     
+    def show
+        @category = Category.find_by(id: params[:id])
+    end
+
     def edit
         @category = Category.find_by(params[:id])
         @quote = Quote.find_by(id: params[:quote_id])
     end
 
     def create
-        category = Category.create(name: category_params["name"])
-        CategoryQuote.create(category_id: category.id, quote_id: category_params["quote_id"])
-        redirect_to category_path(category)
+        category = Category.find_or_create_by(name: category_params[:name])
+        category_quote = CategoryQuote.find_or_create_by(category_id: category.id, quote_id: category_params["quote_id"])
+        redirect_to quote_path(category_params["quote_id"])
     end
     
     def update

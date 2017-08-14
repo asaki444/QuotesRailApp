@@ -20,6 +20,7 @@ class QuotesController < ApplicationController
     def create
         quote = Quote.new(quote_params)
         if quote.save
+        flash[:notice] = "New Quote Created"
         redirect_to quote_path(quote)
         else
         flash[:notice] = "Text or Author Missing"
@@ -30,11 +31,15 @@ class QuotesController < ApplicationController
  
     def update
         quote = Quote.find_by(params[:id])
-        quote.update(quote_params)
-        binding.pry
-        quote.save
-        redirect_to quote_path(quote)
+        if quote.update(quote_params)
+            flash[:notice] = "Quote Updated"
+           redirect_to quote_path(quote)
+        else
+            flash[:notice] = "Uh Oh Something is Missing"
+            redirect_to edit_quote_path(quote)
+        end
     end
+
     private
 
     def quote_params
