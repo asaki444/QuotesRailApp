@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :authors
   resources :category_quotes
   resources :categories
   root to: "static_pages#home"

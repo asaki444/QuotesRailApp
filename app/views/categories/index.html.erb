@@ -1,10 +1,6 @@
+<% @categories.each do |category| %>
+    <%=  category.name %>
+<% end %>
 
-<ul>
-    <% @categories.each do |category| %>
-    <li>  <%=  category.name %> <br>
-            <%= link_to "Show Category", category_path(category) %>
-    </li>
-    <% end %>
-</ul>
 
 <%= link_to "Add Category", new_quote_category_path(@quote) %>
