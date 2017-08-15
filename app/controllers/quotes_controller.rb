@@ -1,4 +1,3 @@
-require 'pry'
 class QuotesController < ApplicationController
 
     def index
@@ -14,14 +13,12 @@ class QuotesController < ApplicationController
     end
     
     def show 
-        @quote = Quote.find_by(id: params[:id])
-        binding.pry
+        @quote = Quote.find_by(id: params[:id]) 
         @categories = @quote.categories.order("name ASC")
     end 
 
     def create
         quote = Quote.new(quote_params)
-        binding.pry
         if quote.save
         redirect_to quote_path(quote)
         else
