@@ -1,12 +1,17 @@
 class CategoriesController < ApplicationController
+    
     def new
         @quote = Quote.find_by(id: params[:quote_id])
         @category = Category.new
     end
+    
+    def show
+        @category = Category.find_by(id: params[:id])
+    end
 
     def index
         @quote = Quote.find_by(id: params[:quote_id])
-        @categories = @rquote.categories
+        @categories = @quote.categories
     end
     
     def edit

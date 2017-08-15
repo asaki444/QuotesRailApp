@@ -15,6 +15,7 @@ class QuotesController < ApplicationController
     
     def show 
         @quote = Quote.find_by(id: params[:id])
+        @categories = @quote.categories.order("name ASC")
     end 
 
     def create
@@ -31,8 +32,6 @@ class QuotesController < ApplicationController
     def update
         quote = Quote.find_by(params[:id])
         quote.update(quote_params)
-        binding.pry
-        quote.save
         redirect_to quote_path(quote)
     end
     private
