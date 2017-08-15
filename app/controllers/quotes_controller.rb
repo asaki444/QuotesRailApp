@@ -15,11 +15,13 @@ class QuotesController < ApplicationController
     
     def show 
         @quote = Quote.find_by(id: params[:id])
+        binding.pry
         @categories = @quote.categories.order("name ASC")
     end 
 
     def create
         quote = Quote.new(quote_params)
+        binding.pry
         if quote.save
         redirect_to quote_path(quote)
         else
