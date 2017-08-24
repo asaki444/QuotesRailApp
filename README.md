@@ -6,7 +6,7 @@ Collect your favorite quotes, and organize them by categories. You can create ca
 
 #How To Use
 
-1. Clone this repo, run bundle install, and rake db:migrate.
+1. Clone this repo, run bundle install, rake db:migrate, and rake db:seed.
 2. Type in rails -s to run the server to test the app.
 3. Create a new log in or log in with your Facebook account.
 
