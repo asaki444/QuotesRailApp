@@ -1,10 +1,10 @@
-#Quotes Rails App
+# Quotes Rails App
 
-#About 
+# About 
 
 Collect your favorite quotes, and organize them by categories. You can create categories created by other users, and by you.
 
-#How To Use
+# How To Use
 
 1. Clone this repo, run bundle install, rake db:migrate, and rake db:seed.
 2. Type in rails -s to run the server to test the app.
