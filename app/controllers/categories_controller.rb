@@ -20,8 +20,10 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        category = Category.create(name: category_params["name"])
-        CategoryQuote.create(category_id: category.id, quote_id: category_params["quote_id"])
+        category = Category.new(name: category_params["name"])
+        category.save
+        category_quote = CategoryQuote.new(category_id: category.id, quote_id: category_params["quote_id"])
+        category_quote.save
         redirect_to category_path(category)
     end
     
