@@ -1,0 +1,21 @@
+<%= form_for(quote) do |f| %>
+    <div class="field">
+        <%= f.label :text %><br>
+        <%= f.text_area :text %><br>
+        <%= f.label :author %><br>
+        <%= f.text_field :author %><br>
+    </div>
+    <div class = "field">
+        <p>Select a Category: </p>
+         <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    </div>
+
+    <div class = "field">
+       <p>Add a Category:</p>
+     <%= f.fields_for :categories, quote.categories.build do |category_fields| %>
+                <%= category_fields.label :name %>
+                <%= category_fields.text_field :name %>
+        <% end %>
+    </div>
+    <%= f.submit %>
+<% end %>

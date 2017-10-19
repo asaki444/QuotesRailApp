@@ -1,0 +1,5 @@
+<% @quotes.each do |quote| %>
+    <%= quote.name %>
+        by: <%= quote.author %>
+    <%= link_to "Show Categories", quote_categories_path(quote) %>
+<% end %>

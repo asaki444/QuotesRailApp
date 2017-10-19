@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuotesRailsApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <nav>
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+      Hi! <%= current_user.email %>
+      <li><%= link_to "Sign out", destroy_user_session_path, method: 'DELETE' %></li>
+      <li> <%= link_to "Add Quote", new_quote_path %></li>
+      <li> <%= link_to "Edit User Account", edit_user_registration_path %></li>
+      <li> <%= link_to "Home", root_path %></li>
+      <% else %>
+      <li>  <%= link_to "Sign Up", new_user_registration_path %> </li>
+      <li>  <%= link_to "Sign In", user_session_path %></li>
+      <li>  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+      <% end %>
+    </ul>      
+    </div>
+    </nav>
+     <p class="notice" style="color:red"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

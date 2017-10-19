@@ -1,0 +1,23 @@
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
+
+<h1>quotes app </h1>
+    <p>collect the quotes you love!</p>
+<h2>Most Relatable Quote Today</h2>
+ <h3> <%=  @relatable.text %> </h3>
+    <h4>By: <%= @relatable.author %></h4>
+<% if !@quotes.empty? %>
+    <% @quotes.all.each do |quote|%>
+        <div>
+            Name: <%= quote.text %><br>
+            Author: <%= quote.author %><br>
+            <%= link_to "Quote", quote_path(quote) %>
+            <%= link_to "Categories", quote_categories_path(quote) %>
+        </div>
+    <% end %>
+<% else %>
+     <h3>Looks like no one has added their quotes!</h3>
+<% end %>
+
+ <%= link_to "Add Quote", new_quote_path %>

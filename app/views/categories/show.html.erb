@@ -1,0 +1,6 @@
+<h3><%= @category.name %></h3>
+
+<% @category.quotes.each do |quote| %>
+  <h5>  <%= quote.text %></h5>
+ <p> Author: <%= quote.author %> </p>
+<% end %>

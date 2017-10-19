@@ -1,0 +1,13 @@
+<h2><%= @quote.text %></h2>
+
+- <h4><%= @quote.author %></h4>
+
+
+<ul>
+    <% @categories.each do |category|  %>
+        <li><%= category.name %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Add Original Category", new_quote_category_path(@quote) %><br>
+<%= link_to "Edit Quote", edit_quote_path(@quote) %>

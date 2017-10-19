@@ -1,0 +1,6 @@
+<% @categories.each do |category| %>
+    <%=  category.name %>
+<% end %>
+
+
+<%= link_to "Add Category", new_quote_category_path(@quote) %>
