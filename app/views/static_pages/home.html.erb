@@ -8,6 +8,9 @@
  <h3> <%=  @relatable.text if @relatable %> </h3>
     <h4>By: <%= @relatable.author if @relatable%></h4>
 <% if !@quotes.empty? %>
+    <h2>Most Relatable Quote Today</h2>
+    <h3> <%=  @relatable.text %> </h3>
+    <h4>By: <%= @relatable.author %></h4>
     <% @quotes.all.each do |quote|%>
         <div>
             Name: <%= quote.text %><br>

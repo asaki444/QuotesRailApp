@@ -6,6 +6,7 @@ class QuotesController < ApplicationController
     end
     
     def new
+        @error = params[:error]
         @quote = Quote.new if !check
     end
     
@@ -23,8 +24,8 @@ class QuotesController < ApplicationController
         if quote.save
         redirect_to quote_path(quote)
         else
-        flash[:notice] = "Text or Author Missing"
-        redirect_to new_quote_path
+        @error = quote.errors.full_messages
+        redirect_to new_quote_path(:error => @error )
         end
     end
 
@@ -34,6 +35,7 @@ class QuotesController < ApplicationController
         quote.update(quote_params)
         redirect_to quote_path(quote)
     end
+
     private
 
     def quote_params
