@@ -1,13 +1,18 @@
 class QuotesController < ApplicationController
 
-    def index
+    def home
        @quotes = current_user.quotes if !check
+       render json: @quotes
+    end
+
+    def index
+        @quotes = Quote.all
        render json: @quotes
     end
     
     def new
         @error = params[:error]
-        @quote = Quote.new if !check
+         @quote = Quote.new if !check
     end
     
     def edit

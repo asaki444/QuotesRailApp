@@ -7,20 +7,21 @@
 <h2>Most Relatable Quote Today</h2>
  <h3> <%=  @relatable.text if @relatable %> </h3>
     <h4>By: <%= @relatable.author if @relatable%></h4>
-<% if !@quotes.empty? %>
-    <h2>Most Relatable Quote Today</h2>
-    <h3> <%=  @relatable.text %> </h3>
-    <h4>By: <%= @relatable.author %></h4>
-    <% @quotes.all.each do |quote|%>
-        <div>
-            Name: <%= quote.text %><br>
-            Author: <%= quote.author %><br>
-            <%= link_to "Quote", quote_path(quote) %>
-            <%= link_to "Categories", quote_categories_path(quote) %>
-        </div>
-    <% end %>
-<% else %>
-     <h3>Looks like no one has added their quotes!</h3>
-<% end %>
 
- <%= link_to "Add Quote", new_quote_path %>
+<div id="quotes">
+<h3>All Quotes </h3>
+<div>
+<script type="text/javascript" charset="utf-8">
+ console.log( "ready!" );
+$(document).ready(function() {
+    var text=""
+   $.get('/quotes.json').done(function(data){
+       debugger
+    for(var i = 0; i < data.length;i++){
+      text+="<h5>"+data[i]["text"]+"<h5>"
+      text+="<h6>"+data[i]["author"]+"<h5>" }
+       $("div#quotes").html(text)
+   })
+
+});
+</script>
