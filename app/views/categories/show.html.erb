@@ -1,25 +1,24 @@
-<div id = "name">
-<div>
-<div id="quotes">
+<div id="name">
 <div>
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function(data) {
-  var text="";
-  var quote="";
-    $.get(window.location.pathname+ ".json").done(function(data){
-      text+="<h2>"+data["data"]["attributes"]["name"]+"</h2>"
-      text+="<button id='button'>Show Quotes</button>"
-      $("div#name").html(text);
-      $("div#name").on('click', 'button', function(){
-        quote+="<h3>Quotes</h3>"
-        debugger
-        for(var i=0;i<data["data"]["relationships"]["quotes"]["data"]["length"];i++){
-         quote+= "<p>"+data["data"]["relationships"]["quotes"]["data"][i]["text"]
-         quote+= "<p>by "+data["data"]["relationships"]["quotes"]["data"][i]["author"]+"</p>"
-        }
-           $("div#quotes").html(quote)
-      })
+    var text="";
+    var quote="";
+      $.get(window.location.pathname+ ".json").done(function(data){
+        text+="<h2>"+data["data"]["attributes"]["name"]+"</h2>"
+        text+="<button>Show Quotes</button>"
+        $("div#name").html(text);
+        $("div#name").on('click', 'button', function(){
+        quote+="<h1>"+data["data"]["attributes"]["name"]+"</h1>"
+        quote+="<h2>Quotes</h2>"
+          for(var i=0;i<data["data"]["relationships"]["quotes"]["data"]["length"];i++){
 
-    })
+          quote+= "<p>"+data["data"]["relationships"]["quotes"]["data"][i]["text"]
+          quote+= "<p>by "+data["data"]["relationships"]["quotes"]["data"][i]["author"]+"</p>"
+          }
+          $("div#name").html(quote)
+        })
+
+      })
   })
 </script>
