@@ -18,14 +18,13 @@ $(document).ready(function() {
     var id;
    $.get('/quotes.json').done(function(data){
       for(var i=0;i<data["length"];i++){
-          
+          id = i+1
           text+="<h3>"+data[i+""]["text"]+"</h3>"
           text+="<h4>"+data[i+""]["author"]+"</h3>"
-          text+="<a href ='/categories'>Show All Categories</a>"
+          text+="<a href='/quotes/"+id+"'> See Quote </a>"
       }
-      
-        $("div#quotes").html(text);
-   })//last line of the first get requeet
+         $("div#quotes").html(text);
+      })
 }) //last line of the document ready function
 
 </script>
