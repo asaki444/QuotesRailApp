@@ -17,8 +17,7 @@
        var category = $.post('/categories', values);
  
        category.done(function(data) {
-           debugger
-       $("div#category").html(data)
+       $("div#category").html(data["data"]["attributes"]["name"])
       });
     });
   });

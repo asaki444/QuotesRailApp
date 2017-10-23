@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
     def edit
         @category = Category.find_by(params[:id])
         @quote = Quote.find_by(id: params[:quote_id])
+        render json: @category, status: 201
     end
 
     def create
@@ -30,6 +31,7 @@ class CategoriesController < ApplicationController
         category.save
         category_quote = CategoryQuote.new(category_id: category.id, quote_id: category_params["quote_id"])
         category_quote.save
+        render json: category, status: 201
         # redirect_to category_path(category)
     end
     
