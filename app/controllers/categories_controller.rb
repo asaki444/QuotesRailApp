@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
         category.save
         category_quote = CategoryQuote.new(category_id: category.id, quote_id: category_params["quote_id"])
         category_quote.save
-        redirect_to category_path(category)
+        # redirect_to category_path(category)
     end
     
     def update

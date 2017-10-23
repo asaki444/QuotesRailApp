@@ -1,6 +1,25 @@
+<div id="category">
+
 <%= form_for (category) do |f| %>
     <%=  f.label :name %>
     <%=  f.text_field :name %>
     <%=  f.hidden_field :quote_id, :value => quote.id %>
     <%=  f.submit %>
 <% end %>
+<div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+       var values = $(this).serialize();
+ 
+       var category = $.post('/categories', values);
+ 
+       category.done(function(data) {
+           debugger
+       $("div#category").html(data)
+      });
+    });
+  });
+</script>
