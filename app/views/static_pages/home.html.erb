@@ -14,14 +14,18 @@
 <script type="text/javascript" charset="utf-8">
  console.log( "ready!" );
 $(document).ready(function() {
-    var text=""
+    var text = ""
+    var id;
    $.get('/quotes.json').done(function(data){
-       debugger
-    for(var i = 0; i < data.length;i++){
-      text+="<h5>"+data[i]["text"]+"<h5>"
-      text+="<h6>"+data[i]["author"]+"<h5>" }
-       $("div#quotes").html(text)
-   })
+      for(var i=0;i<data["length"];i++){
+          
+          text+="<h3>"+data[i+""]["text"]+"</h3>"
+          text+="<h4>"+data[i+""]["author"]+"</h3>"
+          text+="<a href ='/categories'>Show All Categories</a>"
+      }
+      
+        $("div#quotes").html(text);
+   })//last line of the first get requeet
+}) //last line of the document ready function
 
-});
 </script>

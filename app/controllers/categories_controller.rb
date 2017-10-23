@@ -7,11 +7,17 @@ class CategoriesController < ApplicationController
     
     def show
         @category = Category.find_by(id: params[:id])
+        respond_to do |f|
+        f.html {render :show}
+        f.json {render json: @category}
+        end
     end
 
     def index
-        @quote = Quote.find_by(id: params[:quote_id])
-        @categories = @quote.categories
+        # @quote = Quote.find_by(id: params[:quote_id])
+        # @categories = @quote.categories
+        @categories = Category.all
+        render json: @categories
     end
     
     def edit

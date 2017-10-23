@@ -21,7 +21,11 @@ class QuotesController < ApplicationController
     
     def show 
         @quote = Quote.find_by(id: params[:id]) 
-        @categories = @quote.categories.order("name ASC")
+        respond_to do |f|
+        f.html {render :show}
+        f.json {render json: @quote}
+        end
+        # @categories = @quote.categories.order("name ASC")
     end 
 
     def create
