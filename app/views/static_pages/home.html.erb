@@ -17,21 +17,22 @@ $(document).ready(function() {
     var text = ""
     var id;
     function Quote(data,id){
-
-        debugger
            this.text = data["attributes"]["text"]
            this.author = data["attributes"]["author"]
            this.formatQuote = function(){
-               text+=`<h3> ${this.text} </h3>
+             return `<h3> ${this.text} </h3>
                <h4> - ${this.author}</h4> 
-               <a href="quotes/${id}">See Quotes </a>
+               <a href="quotes/${id}">See Quote </a>
                `
            }
        }
    $.get('/quotes.json').done(function(data){
       for(var i=0;i<data["data"]["length"];i++){
+          debugger
           id = i + 1
-        new Quote(data["data"][i],id)
+        var quote = new Quote(data["data"][i],id);
+        text+=quote.formatQuote();
+        
       }
          $("div#quotes").html(text);
       })
