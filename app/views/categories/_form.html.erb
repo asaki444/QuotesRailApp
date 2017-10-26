@@ -12,16 +12,16 @@
   $(function () {
     $('form').submit(function(event) {
       event.preventDefault();
-       var values = $(this).serialize();
+       let values = $(this).serialize();
  
-       var category = $.post('/categories', values);
+       let category = $.post('/categories', values);
  
        category.done(function(data) {
-        var quote=""
+        let quote=""
         quote+=data["data"]["attributes"]["name"]
-        for(var i=0;i<data["data"]["relationships"]["quotes"]["data"]["length"];i++){
-          quote+= "<p>"+data["data"]["relationships"]["quotes"]["data"][i]["text"]
-          quote+= "<p>by "+data["data"]["relationships"]["quotes"]["data"][i]["author"]+"</p>"
+        for(let i=0;i<data["data"]["relationships"]["quotes"]["data"]["length"];i++){
+          quote+= `<p>${data["data"]["relationships"]["quotes"]["data"][i]["text"]}`
+          quote+= `<p>by- ${data["data"]["relationships"]["quotes"]["data"][i]["author"]}</p>`
         }
         $("div#category").html(quote)  
       });

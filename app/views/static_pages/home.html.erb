@@ -14,8 +14,8 @@
 <script type="text/javascript" charset="utf-8">
  console.log( "ready!" );
 $(document).ready(function() {
-    var text = ""
-    var id;
+    let text = ""
+    let id;
     function Quote(data,id){
            this.text = data["attributes"]["text"]
            this.author = data["attributes"]["author"]
@@ -27,10 +27,10 @@ $(document).ready(function() {
            }
        }
    $.get('/quotes.json').done(function(data){
-      for(var i=0;i<data["data"]["length"];i++){
+      for(let i=0;i<data["data"]["length"];i++){
           debugger
           id = i + 1
-        var quote = new Quote(data["data"][i],id);
+        let quote = new Quote(data["data"][i],id);
         text+=quote.formatQuote();
         
       }
