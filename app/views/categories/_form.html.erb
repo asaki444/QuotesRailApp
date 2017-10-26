@@ -9,19 +9,27 @@
 <div>
 
 <script type="text/javascript" charset="utf-8">
+
+function Category(data){
+  this.name = data["data"]["attributes"]["name"];
+  this.formatQuotes = function(i){
+     `<h3> ${data["data"]["relationships"]["quotes"]["data"][i]["author"]}</h3> <br>
+    by - <h5>${data["data"]["relationships"]["quotes"]["data"][i]["text"]}</h5>`
+  }
+}
   $(function () {
     $('form').submit(function(event) {
       event.preventDefault();
        let values = $(this).serialize();
  
        let category = $.post('/categories', values);
- 
+       
        category.done(function(data) {
+        let cat = new Category(data)
         let quote=""
         quote+=data["data"]["attributes"]["name"]
         for(let i=0;i<data["data"]["relationships"]["quotes"]["data"]["length"];i++){
-          quote+= `<p>${data["data"]["relationships"]["quotes"]["data"][i]["text"]}`
-          quote+= `<p>by- ${data["data"]["relationships"]["quotes"]["data"][i]["author"]}</p>`
+             cat.formatQuotes(i)
         }
         $("div#category").html(quote)  
       });
