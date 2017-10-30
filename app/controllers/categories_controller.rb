@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
         category.save
         category_quote = CategoryQuote.new(category_id: category.id, quote_id: category_params["quote_id"])
         category_quote.save
-        # render json: category, status: 201
+        render json: category, status: 201
         # redirect_to category_path(category)
     end
     
