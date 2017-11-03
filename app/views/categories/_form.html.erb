@@ -27,6 +27,9 @@ function Category(data){
         let cat = new Category(data)
         let quote=""
          quote+=data["data"]["attributes"]["name"]
+
+         quote+=`<p>${data["data"]["attributes"]["formatted-quotes"][0]["text"]}</p>`
+         quote+=`<p>${data["data"]["attributes"]["formatted-quotes"][0]["author"]}</p>`
         $("div#category").html(quote)  
       });
     });
