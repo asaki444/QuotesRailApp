@@ -17,7 +17,10 @@ class CategoriesController < ApplicationController
         # @quote = Quote.find_by(id: params[:quote_id])
         # @categories = @quote.categories
         @categories = Category.all
-        render json: @categories
+        respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @category}
+        end
     end
     
     def edit

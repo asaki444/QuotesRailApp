@@ -6,7 +6,7 @@ class QuotesController < ApplicationController
     end
 
     def index
-        @quotes = Quote.all
+       @quotes = Quote.all
        render json: @quotes
     end
     
