@@ -11,31 +11,3 @@
 <div id="quotes">
 <h3>All Quotes </h3>
 <div>
-<script type="text/javascript" charset="utf-8">
- console.log( "ready!" );
-$(document).ready(function() {
-    let text = ""
-    let id;
-    function Quote(data,id){
-           this.text = data["attributes"]["text"]
-           this.author = data["attributes"]["author"]
-           this.formatQuote = function(){
-             return `<h3> ${this.text} </h3>
-               <h4> - ${this.author}</h4> 
-               <a href="quotes/${id}">See Quote </a>
-               `
-           }
-       }
-   $.get('/quotes.json').done(function(data){
-      for(let i=0;i<data["data"]["length"];i++){
-          debugger
-          id = i + 1
-        let quote = new Quote(data["data"][i],id);
-        text+=quote.formatQuote();
-        
-      }
-         $("div#quotes").html(text);
-      })
-}) //last line of the document ready function
-
-</script>

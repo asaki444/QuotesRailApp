@@ -3,21 +3,31 @@
 <div id="name">
 <div>
 <script type="text/javascript" charset="utf-8">
-$(document).ready(function(data) {
-    var text="";
-    var quote="";
-      $.get(window.location.pathname+ ".json").done(function(data){
-        debugger
-        text+="<h2>"+data["data"]["attributes"]["name"]+"</h2>"
-        text+="<button>Show Quotes</button>"
-        $("div#name").html(text);
-        $("div#name").on('click', 'button', function(){
-        quote+="<h1>"+data["data"]["attributes"]["name"]+"</h1>"
-        quote+="<h2>Quotes</h2>"
-          for(var i=0;i<data["data"]["attributes"]["formatted-quotes"]["length"];i++){
+$(document).ready(function() {
 
-          quote+= "<p>"+data["data"]["attributes"]["formatted-quotes"][i]["text"]
-          quote+= "<p>by "+data["data"]["attributes"]["formatted-quotes"][i]["author"]+"</p>"
+       function Category(data){
+         this.name = data.name
+       }
+       Category.prototype.render = function(){
+         return (`
+           <h2>${this.name}</h2>
+           <button>Show Quotes</button>
+         `)
+       }
+
+       
+
+      $.get(window.location.pathname + ".json").done(function(data){
+        let quotes = "";
+        const category = new Category(data.data.attributes)
+        $("div#name").html(category.render());
+        $("div#name").on('click', 'button', function(){
+        quotes += "<h1>" + data["data"]["attributes"]["name"] + "</h1>"
+        quotes += "<h2>Quotes</h2>"
+          for(var i = 0; i < data["data"]["attributes"]["formatted-quotes"]["length"]; i++){
+
+          quotes+= "<p>"+data["data"]["attributes"]["formatted-quotes"][i]["text"]
+          quotes+= "<p>by "+data["data"]["attributes"]["formatted-quotes"][i]["author"]+"</p>"
           }
           $("div#name").html(quote)
         })
