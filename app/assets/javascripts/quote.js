@@ -1,8 +1,8 @@
     class Quote {
             constructor(data) {
-            this.text = data.attributes.text 
-            this.author = data.attributes.author
-            this.id = data.attributes.id
+            this.text = data.text 
+            this.author = data.author
+            this.id = data.id
         }
 
         formatQuote() {
@@ -17,7 +17,7 @@
    $.get('/quotes.json').done(function(data){
       let text = "";
       for (let i = 0; i < data.data.length; i++) {
-        const quote = new Quote(data.data[i]);
+        const quote = new Quote(data.data[i].attributes);
         text += quote.formatQuote();
       }
          
