@@ -1,7 +1,5 @@
-
-
     class Quote {
-        constructor(data) {
+            constructor(data) {
             this.text = data.attributes.text 
             this.author = data.attributes.author
             this.id = data.attributes.id
@@ -16,7 +14,6 @@
         }
     }
     
-$(document).ready(function() {
    $.get('/quotes.json').done(function(data){
       let text = "";
       for (let i = 0; i < data.data.length; i++) {
@@ -26,4 +23,3 @@ $(document).ready(function() {
          
       $("div#quotes").html(text);
     })
-}) 
