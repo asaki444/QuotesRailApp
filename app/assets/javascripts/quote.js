@@ -6,6 +6,7 @@
         }
 
         formatQuote() {
+
             return (`
                 <h3> ${this.text} </h3>
                 <h4> - ${this.author}</h4> 

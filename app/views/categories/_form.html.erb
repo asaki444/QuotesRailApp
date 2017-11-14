@@ -1,3 +1,4 @@
+ <%= javascript_include_tag 'category_form' %>
 <div id="category">
 
 <%= form_for (category) do |f| %>
@@ -7,25 +8,3 @@
     <%=  f.submit %>
 <% end %>
 <div>
-
-<script type="text/javascript" charset="utf-8">
-  
-  $(function () {
-    $('form').submit(function(event) {
-      event.preventDefault();
-       var values = $(this).serialize();
- 
-       var category = $.post('/categories', values);
-      
-       category.done(function(data) {
-        let cat = new Category(data)
-        let quote=""
-         quote+=data["data"]["attributes"]["name"]
-
-         quote+=`<p>${data["data"]["attributes"]["formatted-quotes"][0]["text"]}</p>`
-         quote+=`<p>${data["data"]["attributes"]["formatted-quotes"][0]["author"]}</p>`
-        $("div#category").html(quote)  
-      });
-    });
-  });
-</script>
